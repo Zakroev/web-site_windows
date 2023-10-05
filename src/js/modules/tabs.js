@@ -1,25 +1,39 @@
-const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
+const tabs = ({
+  headerSelector,
+  tabSelector,
+  contentSelector,
+  activeClass,
+}) => {
   const header = document.querySelector(headerSelector)
-  const tab = document.querySelectorAll(tabSelector)
-  const content = document.querySelectorAll(contentSelector)
+  const tabs = document.querySelectorAll(tabSelector)
+  const tabContents = document.querySelectorAll(contentSelector)
 
   const hideTabContent = () => {
-    content.forEach((item) => {
-      item.style.display = 'none'
+    tabContents.forEach((content) => {
+      content.style.display = 'none'
     })
 
-    tab.forEach((item) => {
-      item.classList.remove(activeClass)
+    tabs.forEach((tab) => {
+      tab.classList.remove(activeClass)
     })
   }
 
-  const showTextContent = (i = 0) => {
-    content[i].style.display = 'block'
-    tab[i].classList.add(activeClass)
+  const showTabContent = (i = 0) => {
+    tabContents[i].style.display = 'block'
+    tabs[i].classList.add(activeClass)
   }
 
   hideTabContent()
-  showTextContent()
+  showTabContent()
+
+  const tabEnterClick = (target) => {
+    tabs.forEach((tab, i) => {
+      if (target === tab || target.parentNode === tab) {
+        hideTabContent()
+        showTabContent(i)
+      }
+    })
+  }
 
   header.addEventListener('click', (e) => {
     const target = e.target
@@ -28,13 +42,21 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
       (target.classList.contains(tabSelector.replace(/\./, '')) ||
         target.parentNode.classList.contains(tabSelector.replace(/\./, '')))
     ) {
-      tab.forEach((item, i) => {
+      tabEnterClick(target)
+      tabs.forEach((item, i) => {
         if (target === item || target.parentNode === item) {
           hideTabContent()
-          showTextContent(i)
+          showTabContent(i)
         }
       })
     }
   })
+  header.addEventListener('keydown', (e) => {
+    const target = e.target
+    if (e.key === 'Enter') {
+      tabEnterClick(target)
+    }
+  })
 }
+
 export default tabs

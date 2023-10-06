@@ -17,6 +17,7 @@ const formsFunction = () => {
 
 	const postData = async (url, data) => {
 		document.querySelector('.status').textContent = message.loading
+
 		let res = await fetch(url, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -39,10 +40,12 @@ const formsFunction = () => {
 			statusMessage.classList.add('status')
 			form.appendChild(statusMessage)
 
-			const formData = {
-				name: form.querySelector('[name="name"]').value,
-				tel: form.querySelector('[name="tel"]').value
-			}
+			const formData = {}
+			const formInputs = form.querySelectorAll('input')
+
+			formInputs.forEach(input => {
+				formData[input.name] = input.value
+			})
 
 			postData('https://simple-server-cumz.onrender.com/api/data', formData)
 				.then(res => {

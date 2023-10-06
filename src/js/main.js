@@ -1,6 +1,18 @@
 import './slider'
-import modals from './modules/moduls'
+import { modules, tabs } from './modules/index'
 
 window.addEventListener('DOMContentLoaded', () => {
-  modals()
+  modules()
+  tabs({
+    headerSelector: '.glazing_slider',
+    tabSelector: '.glazing_block',
+    contentSelector: '.glazing_content',
+    activeClass: 'active',
+  })
+  tabs({
+    headerSelector: '.decoration_slider',
+    tabSelector: '.no_click',
+    contentSelector: '.decoration_content>div>div',
+    activeClass: 'after_click',
+  })
 })

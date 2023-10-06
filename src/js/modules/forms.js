@@ -3,7 +3,7 @@ const formsFunction = () => {
 	const inputs = document.querySelectorAll('input')
 	const phoneInputs = document.querySelectorAll('input[name = "user_phone"]')
 
-	phoneInputs.forEach((input) => {
+	phoneInputs.forEach(input => {
 		input.addEventListener('input', () => {
 			input.value = input.value.replace(/\D/, '')
 		})
@@ -19,29 +19,33 @@ const formsFunction = () => {
 		document.querySelector('.status').textContent = message.loading
 		let res = await fetch(url, {
 			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(data)
 		})
 		return await res.text()
 	}
 
 	const clearInputs = () => {
-		inputs.forEach((input) => {
+		inputs.forEach(input => {
 			input.value = ''
 		})
 	}
 
-	forms.forEach((form) => {
-		form.addEventListener('submit', (e) => {
+	forms.forEach(form => {
+		form.addEventListener('submit', e => {
 			e.preventDefault()
 
 			let statusMessage = document.createElement('div')
 			statusMessage.classList.add('status')
 			form.appendChild(statusMessage)
 
-			const formData = new FormData(form)
+			const formData = {
+				name: form.querySelector('[name="name"]').value,
+				tel: form.querySelector('[name="tel"]').value
+			}
 
 			postData('https://simple-server-cumz.onrender.com/api/data', formData)
-				.then((res) => {
+				.then(res => {
 					console.log(res)
 					statusMessage.textContent = message.success
 				})

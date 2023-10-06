@@ -1,18 +1,19 @@
 import './slider'
-import { modules, tabs } from './modules/index'
+import { formsFunction, modules, tabs } from './modules/index'
 
 window.addEventListener('DOMContentLoaded', () => {
-  modules()
-  tabs({
-    headerSelector: '.glazing_slider',
-    tabSelector: '.glazing_block',
-    contentSelector: '.glazing_content',
-    activeClass: 'active',
-  })
-  tabs({
-    headerSelector: '.decoration_slider',
-    tabSelector: '.no_click',
-    contentSelector: '.decoration_content>div>div',
-    activeClass: 'after_click',
-  })
+	modules()
+	tabs({
+		headerSelector: '.glazing_slider',
+		tabSelector: '.glazing_block',
+		contentSelector: '.glazing_content',
+		activeClass: 'active'
+	})
+	tabs({
+		headerSelector: '.decoration_slider',
+		tabSelector: '.no_click',
+		contentSelector: '.decoration_content>div>div',
+		activeClass: 'after_click'
+	})
+	formsFunction()
 })

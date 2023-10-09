@@ -1,13 +1,10 @@
-const formsFunction = () => {
+import checkNumInputs from './checkNumInputs'
+
+const formsFunction = state => {
 	const forms = document.querySelectorAll('form')
 	const inputs = document.querySelectorAll('input')
-	const phoneInputs = document.querySelectorAll('input[name = "user_phone"]')
 
-	phoneInputs.forEach(input => {
-		input.addEventListener('input', () => {
-			input.value = input.value.replace(/\D/, '')
-		})
-	})
+	checkNumInputs('input[name = "user_phone"]')
 
 	const message = {
 		loading: 'Загрузка',
@@ -41,6 +38,12 @@ const formsFunction = () => {
 			form.appendChild(statusMessage)
 
 			const formData = {}
+			if (item.getAttribute('data-calc') === 'end') {
+				for (let key in state) {
+					formData.append(key, state[key])
+				}
+			}
+
 			const formInputs = form.querySelectorAll('input')
 
 			formInputs.forEach(input => {

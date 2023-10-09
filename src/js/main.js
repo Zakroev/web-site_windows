@@ -29,5 +29,5 @@ window.addEventListener('DOMContentLoaded', () => {
 		display: 'inline-block'
 	})
 
-	formsFunction()
+	formsFunction(modalState)
 })

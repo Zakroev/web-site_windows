@@ -48,7 +48,7 @@ const formsFunction = () => {
 			})
 
 			postData('https://simple-server-cumz.onrender.com/api/data', formData)
-				.then(() => {
+				.then(res => {
 					console.log(res)
 					statusMessage.textContent = message.success
 				})

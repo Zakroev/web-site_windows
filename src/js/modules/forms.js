@@ -18,7 +18,7 @@ const formsFunction = () => {
 	const postData = async (url, data) => {
 		document.querySelector('.status').textContent = message.loading
 
-		let res = await fetch(url, {
+		const res = await fetch(url, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(data)
@@ -36,7 +36,7 @@ const formsFunction = () => {
 		form.addEventListener('submit', e => {
 			e.preventDefault()
 
-			let statusMessage = document.createElement('div')
+			const statusMessage = document.createElement('div')
 			statusMessage.classList.add('status')
 			form.appendChild(statusMessage)
 
@@ -48,7 +48,7 @@ const formsFunction = () => {
 			})
 
 			postData('https://simple-server-cumz.onrender.com/api/data', formData)
-				.then(res => {
+				.then(() => {
 					console.log(res)
 					statusMessage.textContent = message.success
 				})

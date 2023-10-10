@@ -1,6 +1,4 @@
-import modules from './modules'
-import tabs from './tabs'
-import formsFunction from './forms'
-import changeModalState from './changeModalState'
-
-export default { modules, tabs, formsFunction, changeModalState }
+export { default as modules } from './modules'
+export { default as tabs } from './tabs'
+export { default as formsFunction } from './forms'
+export { default as changeModalState } from './changeModalState'

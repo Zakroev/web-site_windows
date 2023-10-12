@@ -41,6 +41,7 @@ const formsFunction = state => {
 			if (form.getAttribute('data-calc') === 'end') {
 				for (let key in state) {
 					formData.append(key, state[key])
+					console.log(formData)
 				}
 			}
 
@@ -50,7 +51,7 @@ const formsFunction = state => {
 				formData.append(input.name, input.value)
 			})
 
-			postData('https://simple-server-cumz.onrender.com/api/data', formData)
+			postData('http://localhost:3000/api/data', formData)
 				.then(res => {
 					console.log(res)
 					statusMessage.textContent = message.success

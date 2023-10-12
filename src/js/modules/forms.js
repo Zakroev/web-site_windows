@@ -38,12 +38,15 @@ const formsFunction = state => {
 			form.appendChild(statusMessage)
 
 			const formData = new FormData(form)
+			const formDataObj = {}
+
 			if (form.getAttribute('data-calc') === 'end') {
 				for (let key in state) {
 					formData.append(key, state[key])
-					console.log(formData)
 				}
 			}
+
+			formData.forEach((value, key) => (formDataObj[key] = value))
 
 			const formInputs = form.querySelectorAll('input')
 
@@ -51,9 +54,8 @@ const formsFunction = state => {
 				formData.append(input.name, input.value)
 			})
 
-			postData('http://localhost:3000/api/data', formData)
+			postData('https://simple-server-cumz.onrender.com/api/data', formDataObj)
 				.then(res => {
-					console.log(res)
 					statusMessage.textContent = message.success
 				})
 				.catch(() => {

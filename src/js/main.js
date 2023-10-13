@@ -1,8 +1,15 @@
 import './slider'
-import { formsFunction, modules, changeModalState, tabs } from './modules'
+import {
+	formsFunction,
+	modules,
+	changeModalState,
+	tabs,
+	timer
+} from './modules'
 
 window.addEventListener('DOMContentLoaded', () => {
 	const modalState = {}
+	const deadline = '2023-10-15'
 
 	changeModalState(modalState)
 
@@ -30,4 +37,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	})
 
 	formsFunction(modalState)
+	timer('.container1', deadline)
 })

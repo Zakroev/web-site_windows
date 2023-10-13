@@ -40,19 +40,22 @@ const formsFunction = state => {
 			const formData = new FormData(form)
 			const formDataObj = {}
 
-			formData.forEach((value, key) => (formDataObj[key] = value))
-
-			const formInputs = form.querySelectorAll('input')
-
-			formInputs.forEach(input => {
-				formData.append(input.name, input.value)
-			})
+			const allInputFilled = true
 
 			if (form.getAttribute('data-calc') === 'end') {
 				for (let key in state) {
 					formData.append(key, state[key])
 				}
 			}
+
+			formData.forEach((value, key) => (formDataObj[key] = value))
+
+			const formInputs = form.querySelectorAll('input')
+
+			formInputs.forEach(input => {
+				formData.append(input.name, input.value)
+				console.log(input.value)
+			})
 
 			postData('http://localhost:3000/api/data', formDataObj)
 				.then(res => {

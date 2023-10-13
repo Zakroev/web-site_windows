@@ -1055,7 +1055,7 @@ textarea:focus {
 }
 
 .popup_calc_profile_content .checkbox {
-	opacity: 0;
+	display: none;
 }
 
 .popup_calc_profile_content .checkbox-custom {

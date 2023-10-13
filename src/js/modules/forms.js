@@ -40,8 +40,6 @@ const formsFunction = state => {
 			const formData = new FormData(form)
 			const formDataObj = {}
 
-			const allInputFilled = true
-
 			if (form.getAttribute('data-calc') === 'end') {
 				for (let key in state) {
 					formData.append(key, state[key])
@@ -58,7 +56,7 @@ const formsFunction = state => {
 			})
 
 			postData('http://localhost:3000/api/data', formDataObj)
-				.then(res => {
+				.then(() => {
 					statusMessage.textContent = message.success
 				})
 				.catch(() => {

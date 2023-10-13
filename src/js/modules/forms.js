@@ -52,10 +52,9 @@ const formsFunction = state => {
 
 			formInputs.forEach(input => {
 				formData.append(input.name, input.value)
-				console.log(input.value)
 			})
 
-			postData('http://localhost:3000/api/data', formDataObj)
+			postData('https://simple-server-cumz.onrender.com/api/data', formDataObj)
 				.then(() => {
 					statusMessage.textContent = message.success
 				})

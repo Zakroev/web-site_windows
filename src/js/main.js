@@ -4,7 +4,8 @@ import {
 	modules,
 	changeModalState,
 	tabs,
-	timer
+	timer,
+	images
 } from './modules'
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -38,4 +39,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	formsFunction(modalState)
 	timer('.container1', deadline)
+	images()
 })

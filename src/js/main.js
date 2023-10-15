@@ -9,7 +9,7 @@ import {
 
 window.addEventListener('DOMContentLoaded', () => {
 	const modalState = {}
-	const deadline = '2023-10-15'
+	const deadline = '2023-10-20'
 
 	changeModalState(modalState)
 

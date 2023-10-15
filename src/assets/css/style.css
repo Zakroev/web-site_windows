@@ -13,6 +13,10 @@ body {
 	color: #000000;
 }
 
+.visually-hidden {
+	opacity: 0;
+}
+
 .status {
 	display: block;
 	color: red;
@@ -1052,10 +1056,6 @@ textarea:focus {
 .popup_calc_profile_content select {
 	margin-bottom: 1rem;
 	outline: none;
-}
-
-.popup_calc_profile_content .checkbox {
-	opacity: 0;
 }
 
 .popup_calc_profile_content .checkbox-custom {

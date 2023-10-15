@@ -1,13 +1,10 @@
-const formsFunction = () => {
+import checkNumInputs from './checkNumInputs'
+
+const formsFunction = state => {
 	const forms = document.querySelectorAll('form')
 	const inputs = document.querySelectorAll('input')
-	const phoneInputs = document.querySelectorAll('input[name = "user_phone"]')
 
-	phoneInputs.forEach(input => {
-		input.addEventListener('input', () => {
-			input.value = input.value.replace(/\D/, '')
-		})
-	})
+	checkNumInputs('input[name = "user_phone"]')
 
 	const message = {
 		loading: 'Загрузка',
@@ -40,16 +37,25 @@ const formsFunction = () => {
 			statusMessage.classList.add('status')
 			form.appendChild(statusMessage)
 
-			const formData = {}
+			const formData = new FormData(form)
+			const formDataObj = {}
+
+			if (form.getAttribute('data-calc') === 'end') {
+				for (let key in state) {
+					formData.append(key, state[key])
+				}
+			}
+
+			formData.forEach((value, key) => (formDataObj[key] = value))
+
 			const formInputs = form.querySelectorAll('input')
 
 			formInputs.forEach(input => {
-				formData[input.name] = input.value
+				formData.append(input.name, input.value)
 			})
 
-			postData('https://simple-server-cumz.onrender.com/api/data', formData)
+			postData('https://simple-server-cumz.onrender.com/api/data', formDataObj)
 				.then(() => {
-					console.log(res)
 					statusMessage.textContent = message.success
 				})
 				.catch(() => {

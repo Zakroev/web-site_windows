@@ -9,6 +9,7 @@ const modules = () => {
 		const modal = document.querySelector(modalSelector)
 		const close = document.querySelector(closeSelector)
 		const windows = document.querySelectorAll('[data-modal]')
+		const scroll = calcScroll()
 
 		//Функции повтора кода--------------------------------
 		const hideWindow = () => {
@@ -20,6 +21,7 @@ const modules = () => {
 		const closeModal = () => {
 			modal.style.display = 'none'
 			document.body.classList.remove('modal-open')
+			document.body.style.marginRight = `0px`
 		}
 		//Блок с фунциями повтора кода окончен ------------------------
 
@@ -33,6 +35,7 @@ const modules = () => {
 
 				modal.style.display = 'block'
 				document.body.classList.add('modal-open')
+				document.body.style.marginRight = `${scroll}px`
 			})
 		})
 
@@ -61,6 +64,21 @@ const modules = () => {
 			document.body.style.overflow = ''
 		}, time)
 		showModalByTime('.popup', 3000)
+	}
+
+	const calcScroll = () => {
+		const div = document.createElement('div')
+
+		div.style.width = '50px'
+		div.style.height = '50px'
+		div.style.overflowY = 'scroll'
+		div.style.visibility = 'hidden'
+
+		document.body.appendChild(div)
+		const scrollWidth = div.offsetWidth - div.clientWidth
+		div.remove
+
+		return scrollWidth
 	}
 
 	bindModal({

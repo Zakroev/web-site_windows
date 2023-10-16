@@ -989,6 +989,7 @@ textarea:focus {
 	opacity: 0;
 	-webkit-transition: ease 0.2s;
 	transition: ease 0.2s;
+}
 .works a[data-fancybox='gallery'] .lupa {
 	/* position: ; */
 	top: 0;
@@ -1004,6 +1005,7 @@ textarea:focus {
 
 .works a[data-fancybox='gallery']:hover .lupa {
 	opacity: 1;
+}
 .works a[data-fancybox='gallery']:hover .lupa {
 	opacity: 1;
 }
@@ -1127,6 +1129,7 @@ textarea:focus {
 	text-align: center;
 	width: 360px;
 	height: 150px;
+}
 .timer1 {
 	padding: 10px;
 	border: 1px solid grey;
@@ -1160,6 +1163,7 @@ textarea:focus {
 	background-color: #575757;
 	border-radius: 7px;
 	padding: 4px;
+}
 .timer1 span {
 	margin-right: 2px;
 	background-color: #575757;
@@ -1170,6 +1174,7 @@ textarea:focus {
 	font-size: 18px;
 	text-align: center;
 	color: black;
+}
 .description1 {
 	font-size: 18px;
 	text-align: center;
@@ -1666,6 +1671,7 @@ textarea:focus {
 	right: 0;
 	bottom: 0;
 	left: 0;
+}
 .popup_calc_profile_content .checkbox:checked + .checkbox-custom::before {
 	content: '';
 	display: block;
@@ -1678,6 +1684,7 @@ textarea:focus {
 
 .checkbox-custom[id='cold']::before {
 	background: url(../img/modal_calc/check.png) center center no-repeat;
+}
 .checkbox-custom[id='cold']::before {
 	background: url(../img/modal_calc/check.png) center center no-repeat;
 }
@@ -1689,6 +1696,7 @@ textarea:focus {
 
 .checkbox-custom[id='warm']::before {
 	background: url(../img/modal_calc/check_warm.png) center center no-repeat;
+}
 .checkbox-custom[id='warm']::before {
 	background: url(../img/modal_calc/check_warm.png) center center no-repeat;
 }
@@ -3028,4 +3036,3 @@ textarea:focus {
 		animation: none !important;
 	}
 }
-

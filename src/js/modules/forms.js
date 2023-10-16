@@ -55,7 +55,7 @@ const formsFunction = state => {
 			})
 
 			postData('https://simple-server-cumz.onrender.com/api/data', formDataObj)
-				.then(res => {
+				.then(() => {
 					statusMessage.textContent = message.success
 				})
 				.catch(() => {
